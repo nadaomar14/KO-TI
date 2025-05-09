@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <!-- Link To CSS -->
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <!-- Box Icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+</head>
+
+<body style="padding-top: 120px;">
+
+    <!-- Header -->
+    <header>
+        <!-- Nav -->
+        <div class="nav container">
+            <!-- Logo -->
+            <a href="/" class="logo">🐾 KOTI</a>
+            <!-- Navbar -->
+            <i class="bx bx-menu" id="menu-icon"></i>
+            <div class="navbar" id="nav-menu">
+                <a href="/index.html#home" class="nav-link">HOME</a>
+                <a href="/index.html#products" class="nav-link">PRODUCTS</a>
+                <a href="/index.html#adoption" class="nav-link">ADAPTION</a>
+                <a href="/index.html#about-us" class="nav-link">ABOUT</a>
+            </div>
+            <!-- Icons -->
+            <div>
+                <!-- Cart-Icon -->
+                <a href="cart.html">
+                    <i class="bx bx-shopping-bag" id="cart-icon" data-quantity="0"></i>
+                </a>
+                <!-- User Icon Dropdown -->
+                <a href="/logout">
+                    <i class="bx bx-log-out" id="user-icon"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">Message</div>
+
+    <div class="dashboard-container">
+        <div style="display: flex; justify-content: space-between;">
+            <h2 id="welcomeMsg">Welcome!</h2>
+            <a href="/admin.html" id="adminDashboardLink" style="display: none;" class="nav-link">Admin Panel</a>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tab-buttons">
+            <button class="tab-btn active" data-tab="orders">Orders</button>
+            <button class="tab-btn" data-tab="address">Address</button>
+            <button class="tab-btn" data-tab="profile">Profile</button>
+        </div>
+
+        <!-- Orders Tab -->
+        <section id="orders" class="tab-section active">
+            <h3>Your Orders</h3>
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Total</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersBody"></tbody>
+            </table>
+
+            <!-- ✅ move this outside the table -->
+            <div id="detailedOrders" style="margin-top: 40px;"></div>
+        </section>
+
+        <!-- Address Tab -->
+        <section id="address" class="tab-section">
+            <div class="dashboard-card">
+                <h3>Manage Address</h3>
+                <form id="addressForm">
+                    <label for="addressInput">New Address</label>
+                    <input type="text" id="addressInput" placeholder="Enter your address..." required />
+                    <button type="submit">Update Address</button>
+                </form>
+                <div class="info-line"><strong>Current Address:</strong> <span id="addressDisplay">Loading...</span>
+                </div>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Manage Phone</h3>
+                <form id="phoneForm">
+                    <label for="phoneInput">New Phone</label>
+                    <input type="text" id="phoneInput" placeholder="Enter your phone number..." required />
+                    <button type="submit">Update Phone</button>
+                </form>
+                <div class="info-line"><strong>Current Phone:</strong> <span id="phoneDisplay">Loading...</span></div>
+            </div>
+        </section>
+
+
+        <!-- Profile Tab -->
+        <section id="profile" class="tab-section">
+            <div class="dashboard-card">
+                <h3>Your Info</h3>
+                <form id="updateForm">
+                    <label for="nameInput">Name</label>
+                    <input type="text" id="nameInput" required />
+
+                    <label for="emailInput">Email (read-only)</label>
+                    <input type="email" id="emailInput" readonly />
+
+                    <button type="submit">Update Info</button>
+                </form>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Change Password</h3>
+                <form id="passwordForm">
+                    <label for="currentPassword">Current Password</label>
+                    <input type="password" id="currentPassword" required />
+
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" required />
+
+                    <label for="confirmPassword">Confirm New Password</label>
+                    <input type="password" id="confirmPassword" required />
+
+                    <button type="submit">Update Password</button>
+                </form>
+            </div>
+        </section>
+
+
+        <!-- Footer Buttons -->
+        <div class="dashboard-actions">
+            <a href="/">Continue Shopping</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <script>
+        // Toast
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            toast.textContent = msg;
+            toast.classList.add("show");
+            setTimeout(() => toast.classList.remove("show"), 3000);
+        }
+
+        // Tabs
+        document.querySelectorAll(".tab-btn").forEach(button => {
+            button.addEventListener("click", () => {
+                document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+                document.querySelectorAll(".tab-section").forEach(sec => sec.classList.remove("active"));
+
+                button.classList.add("active");
+                document.getElementById(button.dataset.tab).classList.add("active");
+            });
+        });
+
+        // Fetch User Info
+        fetch('/api/user').then(res => {
+            if (!res.ok) location.href = '/login';
+            return res.json();
+        }).then(user => {
+            document.getElementById("welcomeMsg").textContent = `Welcome, ${user.name}`;
+            document.getElementById("nameInput").value = user.name;
+            document.getElementById("emailInput").value = user.email;
+            document.getElementById("addressInput").value = user.address || "";
+            document.getElementById("addressDisplay").textContent = user.address || "No address saved.";
+            document.getElementById("phoneInput").value = user.phone || "";
+            document.getElementById("phoneDisplay").textContent = user.phone || "No phone saved.";
+        });
+
+        // Update Info
+        document.getElementById("updateForm").addEventListener("submit", e => {
+            e.preventDefault();
+            const name = document.getElementById("nameInput").value.trim();
+            fetch("/api/update-profile", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name })
+            }).then(res => res.json()).then(data => showToast(data.message || "Updated"));
+        });
+
+        // Change Password
+        document.getElementById("passwordForm").addEventListener("submit", e => {
+            e.preventDefault();
+            const current = document.getElementById("currentPassword").value.trim();
+            const newPass = document.getElementById("newPassword").value.trim();
+            const confirm = document.getElementById("confirmPassword").value.trim();
+            if (newPass !== confirm) return showToast("Passwords do not match");
+            fetch("/api/change-password", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ currentPassword: current, newPassword: newPass })
+            }).then(res => res.json()).then(data => showToast(data.message || "Done"));
+        });
+
+        // Update Address Only
+        document.getElementById("addressForm").addEventListener("submit", e => {
+            e.preventDefault();
+            const address = document.getElementById("addressInput").value.trim();
+            if (!address) return showToast("Address is required.");
+
+            fetch("/api/update-profile", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ address })
+            }).then(res => res.json()).then(data => {
+                showToast("Address updated.");
+                document.getElementById("addressDisplay").textContent = address;
+            });
+        });
+
+        // Update Phone Only
+        document.getElementById("phoneForm").addEventListener("submit", e => {
+            e.preventDefault();
+            const phone = document.getElementById("phoneInput").value.trim();
+            if (!phone) return showToast("Phone number is required.");
+
+            fetch("/api/update-profile", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ phone })
+            }).then(res => res.json()).then(data => {
+                showToast("Phone updated.");
+                document.getElementById("phoneDisplay").textContent = phone;
+            });
+        });
+
+    </script>
+    <script>
+        fetch('/api/my-orders-with-items')
+            .then(res => res.json())
+            .then(orders => {
+                const tableBody = document.getElementById('ordersBody');
+                const detailContainer = document.getElementById('detailedOrders');
+                tableBody.innerHTML = "";
+                detailContainer.innerHTML = "";
+
+                if (!Array.isArray(orders) || orders.length === 0) {
+                    tableBody.innerHTML = `<tr><td colspan="4">No orders found.</td></tr>`;
+                    return;
+                }
+                orders.forEach(order => {
+                    // Summary Row
+                    tableBody.innerHTML += `
+                    <tr>
+                        <td>${order.id}</td>
+                        <td>$${parseFloat(order.total).toFixed(2)}</td>
+                        <td>${new Date(order.created_at).toLocaleDateString()}</td>
+                        <td>${order.status || 'pending'}</td>
+                    </tr>
+                `;
+
+                    // Detailed section
+                    let productsHtml = "";
+                    if (Array.isArray(order.items)) {
+                        productsHtml = order.items.map(item => `
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>$${parseFloat(item.price).toFixed(2)}</td>
+                            <td>${item.quantity}</td>
+                            <td>$${parseFloat(item.subtotal).toFixed(2)}</td>
+                        </tr>
+                    `).join('');
+                    }
+
+                    detailContainer.innerHTML += `
+                    <div class="order-details">
+                        <h4 style="margin-bottom: 10px;">Order #${order.id} (${new Date(order.created_at).toLocaleDateString()})</h4>
+                        <p><strong>Name:</strong> ${order.name}</p>
+                        <p><strong>Email:</strong> ${order.email}</p>
+                        <p><strong>Address:</strong> ${order.address}</p>
+                        <p><strong>Phone:</strong> ${order.phone}</p>
+                        <p><strong>Status:</strong> ${order.status}</p>
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <thead>
+                                <tr style="background:#eee;">
+                                    <th style="padding: 10px;">Product</th>
+                                    <th style="padding: 10px;">Price</th>
+                                    <th style="padding: 10px;">Qty</th>
+                                    <th style="padding: 10px;">Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>${productsHtml}</tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3" style="text-align:right; padding: 10px;"><strong>Total:</strong></td>
+                                    <td style="padding: 10px;"><strong>$${parseFloat(order.total).toFixed(2)}</strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                `;
+                });
+            });
+    </script>
+    <script>
+        fetch('/api/user')
+            .then(res => res.json())
+            .then(user => {
+                if (user.role === 'admin') {
+                    document.getElementById('adminDashboardLink').style.display = 'inline-block';
+                }
+            });
+    </script>
+
+    <!-- Link To JS -->
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+
+</html>

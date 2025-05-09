@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pet Shop</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <!-- Link To CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/header.css" />
+
+    <!-- Box Icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+
+    <!-- Header -->
+    <header>
+        <!-- Nav -->
+        <div class="nav container">
+            <!-- Logo -->
+            <a href="/" class="logo">🐾 KOTI</a>
+            <!-- Navbar -->
+            <i class="bx bx-menu" id="menu-icon"></i>
+            <div class="navbar" id="nav-menu">
+                <a href="/index.html#home" class="nav-link">HOME</a>
+                <a href="/index.html#products" class="nav-link">PRODUCTS</a>
+                <a href="/index.html#adoption" class="nav-link">ADAPTION</a>
+                <a href="/index.html#about-us" class="nav-link">ABOUT</a>
+            </div>
+            <!-- Icons -->
+            <div>
+                <!-- Cart-Icon -->
+                <a href="cart.html">
+                    <i class="bx bx-shopping-bag" id="cart-icon" data-quantity="0"></i>
+                </a>
+                <!-- User Icon Dropdown -->
+                <a>
+                    <i class="bx bx-user" id="user-icon"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Home Section -->
+    <section class="home" id="home">
+        <div class="home-container">
+            <!-- Animated Background Elements -->
+            <div class="deco-shape shape-1"></div>
+            <div class="deco-shape shape-2"></div>
+            <div class="deco-shape shape-3"></div>
+
+            <!-- Image Container with Effects -->
+            <div class="image-container">
+                <div class="image-border"></div>
+                <img src="images/homedog.png" alt="Happy Dog" class="home-dog-img" />
+                <div class="image-gradient-overlay"></div>
+            </div>
+
+            <!-- Content Container -->
+            <div class="home-content">
+                <div class="text-container">
+                    <p class="pre-title animate-slide-right">Premium Pet Care</p>
+                    <h1 class="main-title animate-slide-left">
+                        <span class="highlight">Premium</span> Care<br>
+                        For Your Furry<br>
+                        Friends
+                    </h1>
+                    <p class="subtext animate-fade-in">Discover natural, organic products for your pet's health and
+                        happiness</p>
+
+                    <div class="button-container animate-fade-up">
+                        <a href="#products" class="cta-btn">
+                            Explore Products
+                            <span class="btn-icon">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products container" id="products">
+        <!-- Heading -->
+        <h2 class="heading">Discover Product</h2>
+        <!-- Products Container -->
+        <div class="product-container" id="productList"></div>
+    </section>
+    <section id="adoption" class="adoption-section">
+        <h2>Adopt a Friend 🐾</h2>
+        <p>Meet our lovely cats and dogs looking for a forever home!</p>
+        <div class="adoption-grid">
+            <!-- Cats -->
+            <div class="pet-card">
+                <img src="images/luna.jpeg" alt="Luna the cat">
+                <h3>Luna</h3>
+                <p>Playful and cuddly tabby who loves naps.</p>
+            </div>
+            <div class="pet-card">
+                <img src="images/milo.jpeg" alt="Milo the cat">
+                <h3>Milo</h3>
+                <p>Curious explorer, 2 years old, neutered.</p>
+            </div>
+            <div class="pet-card">
+                <img src="images/nala.jpg" alt="Nala the cat">
+                <h3>Nala</h3>
+                <p>Gentle and sweet, perfect lap cat.</p>
+            </div>
+            <div class="pet-card">
+                <img src="images/simba.jpeg" alt="Simba the cat">
+                <h3>Simba</h3>
+                <p>Loves to climb and chase toys.</p>
+            </div>
+            <div class="pet-card">
+                <img src="images/selo.jpeg" alt="Cleo the cat">
+                <h3>Cleo</h3>
+                <p>Quiet and affectionate senior cat.</p>
+            </div>
+
+            <!-- Dogs -->
+            <div class="pet-card">
+                <img src="images/max.jpeg" alt="Max the dog">
+                <h3>Max</h3>
+                <p>Loyal companion, good with kids.</p>
+            </div>
+            <div class="pet-card">
+                <img src="images/bella.jpeg" alt="Bella the dog">
+                <h3>Bella</h3>
+                <p>Energetic and loving, loves fetch.</p>
+            </div>
+            <div class="pet-card">
+                <img src="images/charle.jpeg" alt="Charlie the dog">
+                <h3>Charlie</h3>
+                <p>Laid-back and friendly lab mix.</p>
+            </div>
+            <div class="pet-card">
+                <img src="images/daisy.jpeg" alt="Daisy the dog">
+                <h3>Daisy</h3>
+                <p>Sweet rescue looking for a quiet home.</p>
+            </div>
+            <div class="pet-card">
+                <img src="images/smoky.jpg" alt="Rocky the dog">
+                <h3>Rocky</h3>
+                <p>Young pup, loves walks and treats.</p>
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section id="about-us" class="about-section">
+        <div class="about-container">
+            <div class="about-content">
+                <div class="about-image-container">
+                    <img src="images/about.jpeg" alt="Cute Pets" class="about-image">
+                </div>
+                <div class="about-text">
+                    <h1 id="typing-title">WELCOME TO KO-TI</h1>
+                    <p class="fade">Welcome to KOTI — your one-stop shop for all things pets! We're a small, passionate
+                        team of
+                        animal lovers dedicated to bringing joy, comfort, and care to your furry friends.</p>
+
+                    <h2 class="fade">Our Story</h2>
+                    <p class="fade">KOTI started as a tiny cat rescue initiative in 2020. Today, we've grown into a
+                        full-service
+                        pet store offering high-quality food, toys, bedding, and grooming supplies — all curated with
+                        your pets in
+                        mind.</p>
+
+                    <h2 class="fade">Our Mission</h2>
+                    <p class="fade">To create a world where every pet is healthy, happy, and loved. We support local
+                        shelters and
+                        encourage adoption by showcasing lovable pets in need of forever homes.</p>
+                    <h2 class="fade">Why Choose Us?</h2>
+                    <ul class="fade" class="fade2">
+                        <li>🐶 Carefully selected, vet-approved products</li>
+                        <li>🐾 Friendly, knowledgeable customer service</li>
+                        <li>🐱 Commitment to animal welfare and ethical sourcing</li>
+                        <li>🚚 Fast, reliable delivery and in-store pickup options</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <div class="footer" id="footer">
+        <div class="footer-c container">
+            <div class="footer-box">
+                <div class="logo-wrapper">
+                    <h2 class="footer-logo">KOTI</h2>
+                    <div class="logo-trail">
+                        <div class="paw-dot" style="--delay: 0s"></div>
+                        <div class="paw-dot" style="--delay: 0.2s"></div>
+                        <div class="paw-dot" style="--delay: 0.4s"></div>
+                    </div>
+                </div>
+                <p class="footer-tagline">Where every pet finds love</p>
+                <div class="social">
+                    <a href="#" class="social-icon" data-tooltip="Pinterest">
+                        <i class="bx bxl-pinterest-alt"></i>
+                        <span class="hover-effect"></span>
+                    </a>
+                    <a href="#" class="social-icon" data-tooltip="Instagram">
+                        <i class="bx bxl-instagram"></i>
+                        <span class="hover-effect"></span>
+                    </a>
+                    <a href="#" class="social-icon" data-tooltip="Facebook">
+                        <i class="bx bxl-facebook"></i>
+                        <span class="hover-effect"></span>
+                    </a>
+                    <a href="#" class="social-icon" data-tooltip="WhatsApp">
+                        <i class="bx bxl-whatsapp"></i>
+                        <span class="hover-effect"></span>
+                    </a>
+                    <a href="#" class="social-icon" data-tooltip="YouTube">
+                        <i class="bx bxl-youtube"></i>
+                        <span class="hover-effect"></span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="copyright-box">
+                <p class="copyright">&#169; <span class="year"></span> KOTI PET SHOP</p>
+                <div class="legal-links">
+                    <a href="#">Privacy</a>
+                    <span class="divider">•</span>
+                    <a href="#">Terms</a>
+                    <span class="divider">•</span>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-paws">
+            <div class="paw" style="--x: 5%; --delay: 0s">🐾</div>
+            <div class="paw" style="--x: 15%; --delay: 0.4s">🐾</div>
+            <div class="paw" style="--x: 30%; --delay: 0.8s">🐾</div>
+            <div class="paw" style="--x: 50%; --delay: 1.2s">🐾</div>
+            <div class="paw" style="--x: 70%; --delay: 1.6s">🐾</div>
+            <div class="paw" style="--x: 85%; --delay: 2s">🐾</div>
+            <div class="paw" style="--x: 95%; --delay: 2.4s">🐾</div>
+        </div>
+    </div>
+
+    <!-- Link To JS -->
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@400;500;600;700;800;900&display=swap");
+* {
+  font-family: "Big Shoulders Text", sans-serif;
+}
+:root {
+  --primary-color: #ff6b6b;
+  /* var(--primary-color); */
+  --secondary-color: #47290a;
+  /* var(--secondary-color); */
+  --primary-hover-color: #ff5252;
+  /* var(--primary-hover-color); */
+  --secondary-hover-color: #3f2409;
+  /* var(--secondary-hover-color); */
+  --container-color: #3d5270;
+  /* var(--container-color); */
+  --text-color: #000000;
+  /* var(--text-color); */
+  --bg-color: #ffffff;
+  /* var(--success-color); */
+  --success-color: #1eff00;
+  /* var(--success-color); */
+  --danger-color: #ff0000;
+  /* var(--danger-color); */
+  --warning-color: #ffee00;
+  /* var(--warning-color); */
+}
+body {
+  color: var(--text-color);
+  background: var(--bg-color);
+}
+
+img {
+  width: 100%;
+}
+
+.container {
+  max-width: 1500px;
+  margin: auto;
+  width: 100%;
+}
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+header.shadow {
+  background: #f2f0f1;
+  box-shadow: 0 1px 4px hsla(0, 4%, 15%, 0.1);
+  transition: 0.5s ease;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+#menu-icon {
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--secondary-color);
+  display: none;
+}
+.logo {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-style: oblique;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  column-gap: 3rem;
+  display: inline-block;
+  position: relative;
+}
+a {
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+
+  display: inline-block;
+  padding: 15px 20px;
+  position: relative;
+}
+a:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: var(--primary-color);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+a:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  font-weight: 700;
+}
+#cart-icon {
+  position: relative;
+  font-size: 1.8rem;
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+#cart-icon[data-quantity="0"]::after {
+  content: "";
+}
+#cart-icon[data-quantity]::after {
+  content: attr(data-quantity);
+  position: absolute;
+  top: 0;
+  right: -11px;
+  width: 20px;
+  height: 20px;
+  background: var(--secondary-color);
+  border-radius: 50%;
+  color: var(--bg-color);
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 15px;
+}
+
+#user-icon {
+  font-size: 24px;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+
+@media (max-width: 991px) {
+  .navbar {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    background: #fff;
+    width: 250px;
+    height: 100vh;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px 20px;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+    transition: 0.4s ease-in-out;
+    z-index: 99;
+  }
+
+  .navbar.active {
+    right: 0;
+  }
+
+  .navbar .nav-link {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+  }
+
+  #menu-icon {
+    display: block;
+    z-index: 999;
+  }
+
+  .nav .logo {
+    z-index: 999;
+  }
+}

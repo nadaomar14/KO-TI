@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Successful</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(to bottom, #f0fff5, #ffffff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: "Big Shoulders Text", sans-serif;
+    }
+
+    .sc-box {
+      background: #fff;
+      padding: 60px 40px;
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      max-width: 480px;
+    }
+
+    .sc-box i {
+      font-size: 80px;
+      color: #28a745;
+      margin-bottom: 20px;
+    }
+
+    .sc-box h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    .sc-box p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    .sc-box a {
+      display: inline-block;
+      padding: 14px 28px;
+      background: #28a745;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .sc-box a:hover {
+      background: #218838;
+    }
+  </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+      <!-- Nav -->
+      <div class="nav container">
+          <!-- Logo -->
+          <a href="/" class="logo">🐾 KOTI</a>
+          <!-- Navbar -->
+          <i class="bx bx-menu" id="menu-icon"></i>
+          <div class="navbar" id="nav-menu">
+              <a href="/index.html#home" class="nav-link">HOME</a>
+              <a href="/index.html#products" class="nav-link">PRODUCTS</a>
+              <a href="/index.html#adoption" class="nav-link">ADAPTION</a>
+              <a href="/index.html#about-us" class="nav-link">ABOUT</a>
+          </div>
+          <!-- Icons -->
+          <div>
+              <!-- Cart-Icon -->
+              <a href="cart.html">
+                  <i class="bx bx-shopping-bag" id="cart-icon" data-quantity="0"></i>
+              </a>
+              <!-- User Icon Dropdown -->
+              <a>
+                  <i class="bx bx-user" id="user-icon"></i>
+              </a>
+          </div>
+      </div>
+  </header>
+
+  <div class="sc-box">
+    <i class="bx bx-check-circle"></i>
+    <h2>Thank You for Your Purchase!</h2>
+    <p>Your payment was successful. Your order is being processed.</p>
+    <a href="/">Continue Shopping</a>
+  </div>
+  <!-- Link To JS -->
+  <script src="js/main.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+
+</html>

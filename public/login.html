@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/auth.css" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <!-- Nav -->
+        <div class="nav container">
+            <!-- Logo -->
+            <a href="/" class="logo">🐾 KOTI</a>
+            <!-- Navbar -->
+            <i class="bx bx-menu" id="menu-icon"></i>
+            <div class="navbar" id="nav-menu">
+                <a href="/index.html#home" class="nav-link">HOME</a>
+                <a href="/index.html#products" class="nav-link">PRODUCTS</a>
+                <a href="/index.html#adoption" class="nav-link">ADAPTION</a>
+                <a href="/index.html#about-us" class="nav-link">ABOUT</a>
+            </div>
+            <!-- Icons -->
+            <div>
+                <!-- Cart-Icon -->
+                <a href="cart.html">
+                    <i class="bx bx-shopping-bag" id="cart-icon" data-quantity="0"></i>
+                </a>
+                <!-- User Icon Dropdown -->
+                <a>
+                    <i class="bx bx-user" id="user-icon"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="auth-container">
+        <div class="auth-form">
+          <h2>Login</h2>
+          <form action="/login" method="POST">
+            <input type="email" name="email" placeholder="Email" required />
+            <input type="password" name="password" placeholder="Password" required />
+            <button type="submit">Login</button>
+          </form>
+          <p>Don't have an account? <a href="register.html">Register here</a></p>
+        </div>
+      </div>
+
+
+    <!-- Link To JS -->
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+
+</html>
