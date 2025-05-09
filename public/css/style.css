@@ -964,10 +964,7 @@ a:hover:after {
     gap: 0.5rem;
   }
 
-  .product-price,
-  .header-price {
-    display: none;
-  }
+
 
   .product-total {
     grid-column: 2;
